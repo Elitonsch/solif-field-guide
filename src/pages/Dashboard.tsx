@@ -9,10 +9,6 @@ import {
   Sprout,
   FileText,
   ArrowRight,
-  Share2,
-  Trash2,
-  Eye,
-  Plus
 } from "lucide-react";
 
 const FeatureCard = ({ 
@@ -42,75 +38,7 @@ const FeatureCard = ({
   </Link>
 );
 
-const ReportCard = ({ 
-  title, 
-  date,
-  producer,
-  onView,
-  onShare,
-  onDelete
-}: { 
-  title: string; 
-  date: string;
-  producer: string;
-  onView: () => void;
-  onShare: () => void;
-  onDelete: () => void;
-}) => {
-  return (
-    <Card className="soil-card p-4">
-      <div className="flex items-start justify-between">
-        <div>
-          <h4 className="text-sm font-medium">{title}</h4>
-          <p className="text-xs text-muted-foreground mt-1">{producer}</p>
-          <p className="text-xs text-muted-foreground">{date}</p>
-        </div>
-        <div className="flex gap-2">
-          <Button variant="ghost" size="icon" onClick={onView} className="h-8 w-8">
-            <Eye className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon" onClick={onShare} className="h-8 w-8">
-            <Share2 className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon" onClick={onDelete} className="h-8 w-8 text-destructive">
-            <Trash2 className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-    </Card>
-  );
-};
-
 const Dashboard = () => {
-  const recentReports = [
-    { 
-      id: 1, 
-      title: "Análise - Talhão Norte", 
-      date: "19/04/2025", 
-      producer: "João Silva",
-      type: "Análise de solo argiloso" 
-    },
-    { 
-      id: 2, 
-      title: "Correção - Área Sul", 
-      date: "18/04/2025", 
-      producer: "Maria Santos",
-      type: "Correção de solo arenoso" 
-    }
-  ];
-
-  const handleView = (id: number) => {
-    console.log('Visualizar relatório:', id);
-  };
-
-  const handleShare = (id: number) => {
-    console.log('Compartilhar relatório:', id);
-  };
-
-  const handleDelete = (id: number) => {
-    console.log('Deletar relatório:', id);
-  };
-
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex flex-col items-center justify-center py-4 text-center space-y-2">
@@ -159,30 +87,6 @@ const Dashboard = () => {
           to="/reports" 
         />
       </div>
-
-      {recentReports.length > 0 && (
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-medium">Relatórios Recentes</h2>
-            <Button variant="ghost" size="sm" asChild>
-              <Link to="/reports" className="text-xs">Ver todos</Link>
-            </Button>
-          </div>
-          <div className="grid gap-2">
-            {recentReports.map((report) => (
-              <ReportCard 
-                key={report.id}
-                title={report.title}
-                producer={report.producer}
-                date={report.date}
-                onView={() => handleView(report.id)}
-                onShare={() => handleShare(report.id)}
-                onDelete={() => handleDelete(report.id)}
-              />
-            ))}
-          </div>
-        </div>
-      )}
       
       <div className="flex justify-center">
         <div className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -192,16 +96,6 @@ const Dashboard = () => {
           <strong className="font-medium">IFRO</strong>
         </div>
       </div>
-
-      <Button 
-        className="fixed bottom-20 right-4 h-12 w-12 rounded-full shadow-lg"
-        size="icon"
-        asChild
-      >
-        <Link to="/analysis">
-          <Plus className="h-6 w-6" />
-        </Link>
-      </Button>
     </div>
   );
 };
