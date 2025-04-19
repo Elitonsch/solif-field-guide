@@ -101,31 +101,35 @@ const Dashboard: React.FC = () => {
       className="p-4 min-h-screen" 
       style={{ backgroundColor: BLUE_THEME.background }}
     >
-      <div className="text-center mb-6">
-        <div 
-          className="inline-block p-3 rounded-full mb-3" 
-          style={{ backgroundColor: BLUE_THEME.primary + '20' }}
-        >
-          <h1 
-            className="text-2xl font-bold" 
-            style={{ color: BLUE_THEME.primary }}
-          >
-            SolIF
-          </h1>
-        </div>
-        <div>
-          <h2 className="text-lg font-semibold" style={{ color: BLUE_THEME.secondary }}>
-            PROdata
-          </h2>
-          <p className="text-sm text-gray-600">
-            Laboratório de Programação e Processamento de Dados
-          </p>
-          <p className="text-xs text-gray-500">
-            Tecnologia para o campo
-          </p>
-        </div>
+      {/* Header com Logo e PROdata */}
+      <div className="flex items-center mb-6">
+        <img 
+          src="/logo-white.png" 
+          alt="Logo SolIF" 
+          className="h-8 w-auto"
+        />
+        <h1 className="ml-2 text-2xl font-bold" style={{ color: BLUE_THEME.primary }}>
+          PROdata
+        </h1>
       </div>
 
+      {/* Card de Informações do Laboratório */}
+      <Card className="p-6 mb-8 text-left shadow-md" style={{ backgroundColor: 'white' }}>
+        <h2 className="text-xl font-semibold mb-3" style={{ color: BLUE_THEME.primary }}>
+          Laboratório de Programação e Processamento de Dados
+        </h2>
+        <p className="text-gray-600 mb-2">
+          Dedicado à análise e processamento de dados agrícolas
+        </p>
+        <p className="text-sm text-gray-500">
+          Instituto Federal de Rondônia - IFRO
+        </p>
+        <p className="text-sm text-gray-500">
+          Campus Ariquemes
+        </p>
+      </Card>
+
+      {/* Seção de Relatórios Recentes */}
       <div className="space-y-4">
         <h3 
           className="text-lg font-semibold mb-2" 
@@ -146,6 +150,7 @@ const Dashboard: React.FC = () => {
         ))}
       </div>
 
+      {/* Botão Flutuante */}
       <Link to="/analysis">
         <Button 
           className="fixed bottom-20 right-4 rounded-full shadow-lg"
